@@ -1,0 +1,39 @@
+name: Daily Growth Update
+
+on:
+
+ schedule:
+  - cron: "0 12 * * *"
+
+ workflow_dispatch:
+
+
+jobs:
+
+ growth:
+
+  runs-on: ubuntu-latest
+
+
+  steps:
+
+  - uses: actions/checkout@v3
+
+
+  - name: Update progress
+
+    run: |
+
+      echo "Daily learning progress $(date)" >> progress-log.md
+
+
+      git config user.email "alfiyasayyad903@gmail.com"
+
+      git config user.name "Piya9204"
+
+
+      git add .
+
+      git commit -m "Daily growth update"
+
+      git push
